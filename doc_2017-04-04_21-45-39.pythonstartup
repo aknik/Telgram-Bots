@@ -1,9 +1,0 @@
-from __future__ import division
-
-from math import *
-
-from trigd import *
-
-
-def dec(x):
-    return int(x,16)
