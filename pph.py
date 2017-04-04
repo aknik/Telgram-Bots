@@ -5,8 +5,8 @@ import time
 import subprocess 
 import pexpect
 
-TOKEN = "289123662:AAH-1mZ3C-haAQAWqh4GvCZEIGGx_xIGOv0"
-admin = 6660201
+TOKEN = ":AAH-1mZ3C-"
+admin = 
 bot = telebot.TeleBot(TOKEN) 
 
 c = pexpect.spawn ('/usr/bin/env python2')
