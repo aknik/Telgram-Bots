@@ -1,17 +1,24 @@
 # -*- coding: utf-8 -*-
+# Basado en el trabajo original de https://github.com/i32ropie/Telgram-Bots/blob/master/ssh.py
+# Cualquier comando precedido por / se envìa a la shell linux (bash) y todo lo demás
+# a la sesión interactiva con Python. Excepto get:fihero que nos envia el fichero elegido.
+# Estaba así en el original XDD
+
 import telebot 
 from telebot import types 
 import time 
 import subprocess 
 import pexpect
 
-TOKEN = ":AAH-1mZ3C-"
-admin = 
+TOKEN = "xxxxxxxxxxxxxtokendetubotxxxxxxxxxxxxxxxxxxx"
+admin = 66ID666
+
 bot = telebot.TeleBot(TOKEN) 
 
+##################################################
 c = pexpect.spawn ('/usr/bin/env python2')
 c.expect(['>>>', pexpect.EOF, pexpect.TIMEOUT])
-
+##################################################
 
 def listener(messages):
     for m in messages:
@@ -40,12 +47,16 @@ def execute_command(message):
         #print message.text
         result_command = subprocess.Popen(message.text, shell=True, stdout=subprocess.PIPE).stdout.read()
     else:
-         
+     
+##################################################
+    
 		c.sendline(message.text)
 		c.expect(['>>>', pexpect.EOF, pexpect.TIMEOUT])
-    	#result_command = c.read()
-		result_command = c.before
+    	result_command = c.before
     
+##################################################
+
+
     print result_command
     try:
         bot.send_message( cid, result_command)
@@ -63,6 +74,3 @@ def execute_command(message):
             bot.send_document( cid, open( 'tmp.txt', 'rb'))
 
 bot.polling(none_stop=True)
-
-	
-
